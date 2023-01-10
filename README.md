@@ -21,6 +21,9 @@ A sample web app looks like this:
 
 https://github.com/FlorSing/Password-Generator-ver.01/blob/main/assets/images/05-javascript-challenge-demo.png
 
+![05-javascript-challenge-demo](https://user-images.githubusercontent.com/118206899/211583787-7c8c1367-bf22-4d94-8952-f240f4b115f1.png)
+
+
 The deployed application can be found in the following link:
 
 
