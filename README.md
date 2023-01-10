@@ -19,6 +19,7 @@ Improvements will be made through the creation process.
 
 A sample web app looks like this:
 
+https://github.com/FlorSing/Password-Generator-ver.01/blob/main/assets/images/05-javascript-challenge-demo.png
 
 The deployed application can be found in the following link:
 
