@@ -88,17 +88,18 @@ var upperCasedCharacters = [
   'Z'
 ];
 
-
-let passwordCritera = {
-  length: '10-64',
-  charaterType: [lowerCase, upperCase, numeric, specialCharacter],  
+/*
+let passwordCriteria = {
+  passwordLength: '10-64',
+  characterType: [lowerCasedCharacters, upperCasedCharacters, numericCharacters, specialCharacters],  
 };
+*/
 
   
 
 // Function to prompt user for password options
 function getPasswordOptions() {
- 
+ passwordLength = prompt('select password length');
 }
 
 // Function for getting a random element from an array
@@ -108,7 +109,7 @@ function getRandom(arr) {
 
 // Function to generate password with user input
 function generatePassword() {
-
+  getPasswordOptions();
 }
 
 // Get references to the #generate element
@@ -125,3 +126,6 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener('click', writePassword);
+
+
+console.log(passwordLength);
