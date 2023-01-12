@@ -99,7 +99,7 @@ let passwordCriteria = {
 
 // Function to prompt user for password options
 function getPasswordOptions() {
-  passwordLength = prompt('select password length');
+  passwordLength = prompt('select password length (between 10-64)');
   lowerCase = confirm('include lowercase');
   upperCase = confirm('include uppercase');
   numeric = confirm('include numberic');
@@ -114,9 +114,22 @@ function getPasswordOptions() {
   return criteria;
 
 };
-//console.log(passwordLength);
+
+// this will allocate the password length to each array that will be chosen in criteria
 criteriaList = getPasswordOptions();
 console.log(criteriaList);
+useArr = 0;
+for (i=0;i<criteriaList.length;i++){
+  if (criteriaList[i] == true){
+  useArr += 1;
+  };};
+console.log(useArr);
+
+charCountPerArr = Number(criteriaList[0])/useArr;
+console.log(charCountPerArr);
+
+selectChar =[];
+
 
 // Function for getting a random element from an array
 function getRandom(arr) {
