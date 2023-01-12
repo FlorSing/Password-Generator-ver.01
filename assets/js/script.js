@@ -99,13 +99,39 @@ let passwordCriteria = {
 
 // Function to prompt user for password options
 function getPasswordOptions() {
- passwordLength = prompt('select password length');
-}
+  passwordLength = prompt('select password length');
+  lowerCase = confirm('include lowercase');
+  upperCase = confirm('include uppercase');
+  numeric = confirm('include numberic');
+  spclChar = confirm('include special characters');
+  // alert(passwordLength);
+  // alert(lowerCase);
+  // alert(upperCase);
+  // alert(numeric);
+  // alert(spclChar);
+  criteria = [passwordLength, lowerCase, upperCase, numeric, spclChar];
+  // alert(criteria);
+  return criteria;
+
+};
+//console.log(passwordLength);
+criteriaList = getPasswordOptions();
+console.log(criteriaList);
 
 // Function for getting a random element from an array
 function getRandom(arr) {
+  selectChar = [];
+  for (i=0;i<criteriaList.length;i++){
+    selectChar.push[i] 
+  };
+  return selectChar;
+};
 
-}
+//console.log(getRandNo);
+// plan: divide password length by no. of criteria chosen & select that much per array
+getRandNo = Math.floor(Math.random()*criteriaList);
+    
+
 
 // Function to generate password with user input
 function generatePassword() {
@@ -129,3 +155,5 @@ generateBtn.addEventListener('click', writePassword);
 
 
 console.log(passwordLength);
+console.log(getRandNo);
+  
