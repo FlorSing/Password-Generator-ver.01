@@ -95,12 +95,12 @@ let passwordCriteria = {
 };
 */
 
-criteriaSet = [
-  {spclChar: specialCharacters},
-  {lowerCase: lowerCasedCharacters},
-  {upperCase: upperCasedCharacters},
-  {spclChar: specialCharacters}
- ];
+// criteriaSet = [
+//   {spclChar: specialCharacters},
+//   {lowerCase: lowerCasedCharacters},
+//   {upperCase: upperCasedCharacters},
+//   {spclChar: specialCharacters}
+//  ];
  
 criteriaList = [];
 //criteriaList2 = [];
@@ -108,18 +108,28 @@ criteriaList = [];
 // Function to prompt user for password options
 function getPasswordOptions() {
   
-  passwordLength = prompt('select password length (between 10-64)');
+  passwordLength = parseInt(prompt('select password length (between 10-64)'));
+
+  if (passwordLength < 10 || passwordLength > 64){
+    prompt('Please select password length (between 10-64)');
+  }
+  else if(isNaN(passwordLength)==true){
+    prompt("That' not a number");
+  }
+  else {criteriaList.push(passwordLength);
+  }
+;
+
   lowerCases = confirm('include lowercase');
   upperCases = confirm('include uppercase');
   numerChar = confirm('include numberic');
   specialChar = confirm('include special characters');
+    
   
-  criteriaList.push(passwordLength);
-
   if (lowerCases == true){
     criteriaList.push(lowerCasedCharacters); 
 //    criteriaList2.push(lowerCases);
-  }
+};
 
   if (upperCases == true){
     criteriaList.push(upperCasedCharacters);
@@ -143,7 +153,6 @@ function getPasswordOptions() {
 // need to allocate the password length to each chosen array in criteria
 criteriaList = getPasswordOptions();
 console.log(criteriaList);
-// console.log(criteriaList2);
 
 //console.log(passwordLength);
 // useArr = 0;
@@ -163,26 +172,27 @@ console.log(criteriaList);
 // return selectChar;
 //console.log(selectChar);
 
-distributeLength = Math.floor((Number(criteriaList[0])/(criteriaList.length-1)));  
+distributeLength = Math.floor((criteriaList[0]/(criteriaList.length-1)));  
 console.log(distributeLength);
-charList = [];
+for (x=0; x<distributeLength; x++){
+  y = Math.floor(Math.random()*distributeLength);
+}
+console.log(y);
+
+//charList = [];
 // Function for getting a random element from an array
-function getRandom(arr) {
+// function getRandom(arr) {
 
-  for (x=0; x<distributeLength; x++){
-    y = Math.floor(Math.random()*distributeLength);
-    charList.push(arr.find(function(i){
-    return i == arr[y];
-  }));
+//   charList.push(arr.find(function(i){
+//     return i == arr[y];
+//   }));
 
-  }
-  return charList;
+  
+// };
 
-};
+// console.log(charList);
 
-console.log(charList);
-
-getRandom(criteriaList[1]);
+//getRandom(criteriaList[1]);
 
 
 
@@ -191,17 +201,17 @@ function generatePassword() {
   getPasswordOptions();
 
   for (a=1; a<criteriaList.length; a++){
-    getRandom(criteriaList[a])  
+    console.log(criteriaList[a]);  
   };
-  
 
+  return criteriaList;
 };
 
-console.log(criteriaList[1]);
+//console.log(criteriaList[1]);
 
-for (a=1; a<criteriaList.length; a++){
-  getRandom(criteriaList[a])  
-};
+// for (a=1; a<criteriaList.length; a++){
+//   getRandom(criteriaList[a])  
+// };
   
 
 // Get references to the #generate element
