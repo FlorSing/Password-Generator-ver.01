@@ -103,6 +103,8 @@ criteriaSet = [
  ];
  
 criteriaList = [];
+//criteriaList2 = [];
+
 // Function to prompt user for password options
 function getPasswordOptions() {
   
@@ -112,20 +114,26 @@ function getPasswordOptions() {
   numerChar = confirm('include numberic');
   specialChar = confirm('include special characters');
   
+  criteriaList.push(passwordLength);
+
   if (lowerCases == true){
-    criteriaList.push(lowerCases); 
+    criteriaList.push(lowerCasedCharacters); 
+//    criteriaList2.push(lowerCases);
   }
 
   if (upperCases == true){
-    criteriaList.push(upperCases); 
+    criteriaList.push(upperCasedCharacters);
+ //   criteriaList2.push(upperCases); 
   };
 
   if (numerChar == true){
-    criteriaList.push(numerChar);
+    criteriaList.push(numericCharacters);
+//    criteriaList2.push(numerChar);
   };
 
   if (specialChar == true){
-    criteriaList.push(specialChar);
+    criteriaList.push(specialCharacters);
+ //   criteriaList2.push(specialChar);
   };
 
   return criteriaList;
@@ -135,6 +143,8 @@ function getPasswordOptions() {
 // need to allocate the password length to each chosen array in criteria
 criteriaList = getPasswordOptions();
 console.log(criteriaList);
+// console.log(criteriaList2);
+
 //console.log(passwordLength);
 // useArr = 0;
 // for (i=0;i<criteriaList.length;i++){
@@ -153,42 +163,46 @@ console.log(criteriaList);
 // return selectChar;
 //console.log(selectChar);
 
-
-
+distributeLength = Math.floor((Number(criteriaList[0])/(criteriaList.length-1)));  
+console.log(distributeLength);
 charList = [];
-
-
-
 // Function for getting a random element from an array
 function getRandom(arr) {
 
-  for (a=1; a<criteriaList.length; a++){
-    if (criteriaList[a] == true){
-      y = getCharFrom;
-    }
-  };
-
-  for (x=0; x<y.length; x++){
+  for (x=0; x<distributeLength; x++){
+    y = Math.floor(Math.random()*distributeLength);
     charList.push(arr.find(function(i){
-    return i == arr[Math.floor(Math.random() * arr.length)]
+    return i == arr[y];
   }));
-  };
+
+  }
+  return charList;
 
 };
 
-//console.log(getRandom(lowerCasedCharacters));
+console.log(charList);
+
+getRandom(criteriaList[1]);
+
+
 
 // Function to generate password with user input
 function generatePassword() {
   getPasswordOptions();
 
-  // for (i=1; i<criteriaList.length; i++){
-  //   if (criteriaList[i] == true){
-      
-  //   }
-  // }
+  for (a=1; a<criteriaList.length; a++){
+    getRandom(criteriaList[a])  
+  };
+  
 
-}
+};
+
+console.log(criteriaList[1]);
+
+for (a=1; a<criteriaList.length; a++){
+  getRandom(criteriaList[a])  
+};
+  
 
 // Get references to the #generate element
 var generateBtn = document.querySelector('#generate');
