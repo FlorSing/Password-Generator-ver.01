@@ -95,60 +95,99 @@ let passwordCriteria = {
 };
 */
 
-  
-
+criteriaSet = [
+  {spclChar: specialCharacters},
+  {lowerCase: lowerCasedCharacters},
+  {upperCase: upperCasedCharacters},
+  {spclChar: specialCharacters}
+ ];
+ 
+criteriaList = [];
 // Function to prompt user for password options
 function getPasswordOptions() {
+  
   passwordLength = prompt('select password length (between 10-64)');
-  lowerCase = confirm('include lowercase');
-  upperCase = confirm('include uppercase');
-  numeric = confirm('include numberic');
-  spclChar = confirm('include special characters');
-  // alert(passwordLength);
-  // alert(lowerCase);
-  // alert(upperCase);
-  // alert(numeric);
-  // alert(spclChar);
-  criteria = [passwordLength, lowerCase, upperCase, numeric, spclChar];
-  // alert(criteria);
-  return criteria;
+  lowerCases = confirm('include lowercase');
+  upperCases = confirm('include uppercase');
+  numerChar = confirm('include numberic');
+  specialChar = confirm('include special characters');
+  
+  if (lowerCases == true){
+    criteriaList.push(lowerCases); 
+  }
 
+  if (upperCases == true){
+    criteriaList.push(upperCases); 
+  };
+
+  if (numerChar == true){
+    criteriaList.push(numerChar);
+  };
+
+  if (specialChar == true){
+    criteriaList.push(specialChar);
+  };
+
+  return criteriaList;
+  
 };
 
-// this will allocate the password length to each array that will be chosen in criteria
+// need to allocate the password length to each chosen array in criteria
 criteriaList = getPasswordOptions();
 console.log(criteriaList);
-useArr = 0;
-for (i=0;i<criteriaList.length;i++){
-  if (criteriaList[i] == true){
-  useArr += 1;
-  };};
-console.log(useArr);
+//console.log(passwordLength);
+// useArr = 0;
+// for (i=0;i<criteriaList.length;i++){
+//   if (criteriaList[i] == true){
+//   useArr += 1;
+//   };};
+// //console.log(useArr);
 
-charCountPerArr = Number(criteriaList[0])/useArr;
-console.log(charCountPerArr);
+// charCount = Math.ceil(Number(criteriaList[0])/useArr);
+// //console.log(charCount);
+// //lowerCasedCharacters.forEach()
+// selectChar = [];
+// for (i=5;i>5;i--){
+//   selectChar.push(arr[i]); 
+// };
+// return selectChar;
+//console.log(selectChar);
 
-selectChar =[];
+
+
+charList = [];
+
 
 
 // Function for getting a random element from an array
 function getRandom(arr) {
-  selectChar = [];
-  for (i=0;i<criteriaList.length;i++){
-    selectChar.push[i] 
+
+  for (a=1; a<criteriaList.length; a++){
+    if (criteriaList[a] == true){
+      y = getCharFrom;
+    }
   };
-  return selectChar;
+
+  for (x=0; x<y.length; x++){
+    charList.push(arr.find(function(i){
+    return i == arr[Math.floor(Math.random() * arr.length)]
+  }));
+  };
+
 };
 
-//console.log(getRandNo);
-// plan: divide password length by no. of criteria chosen & select that much per array
-getRandNo = Math.floor(Math.random()*criteriaList);
-    
-
+//console.log(getRandom(lowerCasedCharacters));
 
 // Function to generate password with user input
 function generatePassword() {
   getPasswordOptions();
+
+  // for (i=1; i<criteriaList.length; i++){
+  //   if (criteriaList[i] == true){
+      
+  //   }
+  // }
+
 }
 
 // Get references to the #generate element
@@ -167,6 +206,5 @@ function writePassword() {
 generateBtn.addEventListener('click', writePassword);
 
 
-console.log(passwordLength);
-console.log(getRandNo);
-  
+//console.log(passwordLength);
+//console.log(criteriaSet);
