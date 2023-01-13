@@ -91,17 +91,16 @@ var upperCasedCharacters = [
 
 criteriaList = [];
 optionScore = 0;
-
 // Function to prompt user for password options
 function getPasswordOptions() {
   
-  passwordLength = parseInt(prompt('Please select password length (between 10-64 characters)'));
+  passwordLength = parseInt(prompt('select password length (between 10-64)'));
 
   if (passwordLength < 10 || passwordLength > 64){
-    alert('Please select password length (between 10-64)');
+    prompt('Please select password length (between 10-64)');
   }
   else if(isNaN(passwordLength)==true){
-    alert("That' not a number");
+    prompt("That' not a number");
   }
   else {criteriaList.push(passwordLength);
   }
@@ -133,11 +132,9 @@ else optionScore ++;
   }
   else optionScore ++;
 
-  if (optionScore == 4){
-    alert('Please select at least one charcter type.')
+  if (optionScore = 4){
+    prompt('Please select at least one charcter type.')
   }
-
-
   return criteriaList;
   
 };
@@ -156,13 +153,17 @@ distribute = Math.floor((criteriaList[0]/(criteriaList.length-1)));
 // };
 
 for (a=1; a<criteriaList.length; a++){
+    x = Math.floor(Math.random()*(criteriaList.length+1));
     for (b=0; b<distribute; b++){
         y = Math.floor(Math.random()*distribute);
-        charList.push(criteriaList[a].find(function(i){
-            return i == criteriaList[a][y];
+        charList.push(criteriaList[x].find(function(i){
+            return i == criteriaList[x][y];
         }))
     };
 };  
+
+console.log(x);
+console.log(y);
 
 // Function to generate password with user input
 // function generatePassword() {
