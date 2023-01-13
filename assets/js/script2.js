@@ -88,22 +88,8 @@ var upperCasedCharacters = [
   'Z'
 ];
 
-/*
-let passwordCriteria = {
-  passwordLength: '10-64',
-  characterType: [lowerCasedCharacters, upperCasedCharacters, numericCharacters, specialCharacters],  
-};
-*/
 
-// criteriaSet = [
-//   {spclChar: specialCharacters},
-//   {lowerCase: lowerCasedCharacters},
-//   {upperCase: upperCasedCharacters},
-//   {spclChar: specialCharacters}
-//  ];
- 
 criteriaList = [];
-//criteriaList2 = [];
 
 // Function to prompt user for password options
 function getPasswordOptions() {
@@ -120,30 +106,26 @@ function getPasswordOptions() {
   }
 ;
 
-  lowerCases = confirm('include lowercase');
-  upperCases = confirm('include uppercase');
-  numerChar = confirm('include numberic');
-  specialChar = confirm('include special characters');
+  lowerCases = confirm('Do you want to include lowercase letters?');
+  upperCases = confirm('Do you want to include uppercase letters?');
+  numerChar = confirm('Do you want to include numeric characters?');
+  specialChar = confirm('Do you want to include special characters?');
     
   
   if (lowerCases){
     criteriaList.push(lowerCasedCharacters); 
-//    criteriaList2.push(lowerCases);
 };
 
   if (upperCases){
     criteriaList.push(upperCasedCharacters);
- //   criteriaList2.push(upperCases); 
   };
 
   if (numerChar){
     criteriaList.push(numericCharacters);
-//    criteriaList2.push(numerChar);
   };
 
   if (specialChar){
     criteriaList.push(specialCharacters);
- //   criteriaList2.push(specialChar);
   };
 
   return criteriaList;
@@ -151,69 +133,33 @@ function getPasswordOptions() {
 };
 
 // need to allocate the password length to each chosen array in criteria
-//criteriaList = getPasswordOptions();
+
+criteriaList = getPasswordOptions();
 //console.log(criteriaList);
 
-//console.log(passwordLength);
-// useArr = 0;
-// for (i=0;i<criteriaList.length;i++){
-//   if (criteriaList[i] == true){
-//   useArr += 1;
-//   };};
-// //console.log(useArr);
-
-// charCount = Math.ceil(Number(criteriaList[0])/useArr);
-// //console.log(charCount);
-// //lowerCasedCharacters.forEach()
-// selectChar = [];
-// for (i=5;i>5;i--){
-//   selectChar.push(arr[i]); 
-// };
-// return selectChar;
-//console.log(selectChar);
-
+charList = [];
 distribute = Math.floor((criteriaList[0]/(criteriaList.length-1)));  
-//console.log(distribute);
-for (i=0; i<distribute; i++){
-  y = Math.floor(Math.random()*distribute);
-}
-// console.log(y);
 
-//charList = [];
 // Function for getting a random element from an array
 // function getRandom(arr) {
-
-//   charList.push(arr.find(function(i){
-//     return i == arr[y];
-//   }));
-
   
 // };
 
-// console.log(charList);
-
-//getRandom(criteriaList[1]);
+for (a=1; a<criteriaList.length; a++){
+    for (b=0; b<distribute; b++){
+        y = Math.floor(Math.random()*distribute);
+        charList.push(criteriaList[a].find(function(i){
+            return i == criteriaList[a][y];
+        }))
+    };
+};  
 
 
 
 // Function to generate password with user input
-function generatePassword() {
-//  getPasswordOptions();
-
-  for (a=1; a<criteriaList.length; a++){
-
-    console.log(criteriaList[a]);  
-  };
-
-  return criteriaList;
-};
-
-//console.log(criteriaList[1]);
-
-// for (a=1; a<criteriaList.length; a++){
-//   getRandom(criteriaList[a])  
+// function generatePassword() {
+    
 // };
-  
 
 // Get references to the #generate element
 var generateBtn = document.querySelector('#generate');
@@ -222,7 +168,7 @@ var generateBtn = document.querySelector('#generate');
 // Write password to the #password input
 function writePassword() {
 
-  var password = generatePassword();
+  var password = charList.join('');
   var passwordText = document.querySelector('#password');
 
   passwordText.value = password;
@@ -232,5 +178,3 @@ function writePassword() {
 generateBtn.addEventListener('click', writePassword);
 
 
-//console.log(passwordLength);
-//console.log(criteriaSet);
