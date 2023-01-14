@@ -177,6 +177,8 @@ var generateBtn = document.querySelector('#generate');
 // Write password to the #password input
 function writePassword() {
 
+  getPasswordOptions();    
+
   var password = charList.join('');
   var passwordText = document.querySelector('#password');
 
